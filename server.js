@@ -43,13 +43,6 @@ app.get("/", (req, res) => {
 app.get("/api/seo", async (req, res) => {
   const seoData = await Seo.findOne(); // Fetching the latest SEO settings
 
-  res.setHeader(
-    "Cache-Control",
-    "no-store, no-cache, must-revalidate, proxy-revalidate"
-  );
-  res.setHeader("Pragma", "no-cache");
-  res.setHeader("Expires", "0");
-  res.setHeader("Surrogate-Control", "no-store");
   res.json({
     title: seoData.title,
     description: seoData.description,

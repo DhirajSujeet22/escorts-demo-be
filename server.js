@@ -35,6 +35,10 @@ const productSchema = new mongoose.Schema({
 
 const Product = mongoose.model("Product", productSchema);
 
+app.get("/", (req, res) => {
+  res.json({ message: "working" });
+});
+
 // Get SEO data
 app.get("/api/seo", async (req, res) => {
   const seoData = await Seo.findOne(); // Fetching the latest SEO settings
@@ -104,4 +108,4 @@ app.delete("/api/products/:id", async (req, res) => {
   }
 });
 
-app.listen(4000, () => console.log("Server started on port 4000"));
+app.listen(process.env.PORT, () => console.log("Server started on port 4000"));
